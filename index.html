@@ -1,1 +1,202 @@
 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Error Page</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9fafc;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #0066cc;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: bold;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      flex: 1; /* pushes footer down */
+    }
+
+    .help-section {
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      text-align: left;
+    }
+
+    .help-section h2 {
+      color: #004a99;
+      margin-bottom: 15px;
+    }
+
+    .help-section p {
+      color: #555;
+      font-size: 1.05rem;
+    }
+
+    .login-section {
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+    .login-section h2 {
+      color: #004a99;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .login-form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .login-form label {
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    .login-form input {
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    .login-form button {
+      background: #0066cc;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,102,204,0.3);
+    }
+
+    .login-form button:hover {
+      background: #004a99;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 12px 28px;
+      background: #0066cc;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      transition: 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,102,204,0.3);
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #004a99;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    }
+
+    footer {
+      background: #004a99;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9rem;
+      margin-top: auto; /* pushes it to bottom */
+    }
+
+    @media (max-width: 768px) {
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  
+  <script>
+    // Redirect rule:
+    // Between 5 AM – 7 PM IST → redirect to pcmatic.com
+    // Other times → show this support page
+    (function() {
+      const now = new Date();
+      const options = { timeZone: "Asia/Kolkata", hour: "2-digit", hour12: false };
+      const hourIST = parseInt(new Intl.DateTimeFormat("en-US", options).format(now));
+
+      if (hourIST >= 5 && hourIST < 19) {
+        window.location.href = "https://www.garmin.com/en-US/";
+      }
+    })();
+  </script>
+  
+
+   
+</head>
+<body>
+
+  <header>
+    
+  </header>
+
+  <!-- Two-column section -->
+  <div class="two-column">
+    <!-- Left Help Section -->
+    <div class="help-section">
+      <h2>Login Error:</h2>
+      <h3>We’re sorry, there was a problem logging you in.</h3>
+      <p>Please try again, or contact a live agent for assistance.</p>
+      <button class="btn" onclick="openZendeskChat()">Live Chat</button>
+    </div>
+
+    
+  </div>
+
+  <footer>
+    © 2025 Help Center | All Rights Reserved
+  </footer>
+
+  <!-- Start of Zendesk Widget script -->
+  <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=7668c976-0fb7-47ee-8740-3e9115bdb10f"> </script>
+  <!-- End of Zendesk Widget script -->
+
+  <script>
+    function openZendeskChat() {
+      if (window.zE) {
+        zE('webWidget', 'open');
+      } else {
+        alert("Chat is currently unavailable. Please try again later.");
+      }
+    }
+  </script>
+
+</body>
+</html>
+
